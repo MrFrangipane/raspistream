@@ -33,7 +33,13 @@ class Runner:
         self._vid_gop_size = None
 
     def _setup_asoundrc(self):
-        with open(os.path.expanduser('~/.asoundrc'), 'w+') as f_asoundrc:
+        filepath_asouncrd = os.path.expanduser('~/.asoundrc')
+        filepath_asouncrd_bakcup = filepath_asouncrd + '.backup'
+
+        if os.path.exists(filepath_asouncrd) and not os.path.exists(filepath_asouncrd_bakcup):
+            os.rename(filepath_asouncrd, filepath_asouncrd_bakcup)
+
+        with open(filepath_asouncrd, 'w+') as f_asoundrc:
             f_asoundrc.write('\n'.join([
                 'pcm.{_aud_alsa_input} {{',
                 '  type dsnoop',
