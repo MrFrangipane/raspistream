@@ -13,11 +13,11 @@ pip install git+https://github.com/MrFrangipane/raspistream.git
 To start streaming
 
 ``
-python -m raspistream rtmps://live-api-s.facebook.com:443/rtmp/API_SECRET_KEY
+python -m raspistream --url rtmps://live-api-s.facebook.com:443/rtmp/API_SECRET_KEY
 ``
 
 For all flags 
 
 ``
-python -m raspistream
+python -m raspistream -h
 ``

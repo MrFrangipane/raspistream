@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 
 NAME = 'raspistream'
-VERSION = '0.0.0'
+VERSION = '0.0.1'
 DESCRIPTION = 'RTMP(s) streaming for RaspberryPi 3 + PiSound & PiCam'
 AUTHOR = 'MrFranipane'
 AUTHOR_EMAIL = 'contact@frangipane.me'
