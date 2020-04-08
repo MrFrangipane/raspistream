@@ -1,0 +1,17 @@
+--url rtmp://some.host.com/live/API_SECRET_KEY
+
+--cam-brightness 55
+--cam-white-balance auto
+--cam-exposure backlight
+
+--vid-framerate 8
+--vid-resolution 512x288
+
+--aud-rate 48000
+--aud-input hw:1,0
+--aud-bitrate 128
+--aud-channels 2
+--aud-buffer-size 16384
+--aud-thread-queue 2048
+
+--total-bitrate 1024
