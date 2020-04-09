@@ -3,7 +3,7 @@ import logging
 import subprocess
 
 
-_ALSA_SNOOP_NAME = 'BufferedPiSound'
+_ALSA_SNOOP_NAME = 'RaspiStreamBuffered'
 
 
 class Runner:
@@ -31,6 +31,15 @@ class Runner:
         self._vid_height = None
         self._vid_bitrate = None
         self._vid_gop_size = None
+
+    def run(self):
+        self._aud_alsa_input = _ALSA_SNOOP_NAME
+        self._vid_gop_size = self.vid_framerate * 2
+        self._vid_bitrate = (self.total_bitrate - self.aud_bitrate) * 1024
+        self._vid_width, self._vid_height = self.vid_resolution
+
+        self._setup_asoundrc()
+        self._call()
 
     def _setup_asoundrc(self):
         filepath_asouncrd = os.path.expanduser('~/.asoundrc')
@@ -75,12 +84,3 @@ class Runner:
         logging.info(command)
 
         self._process = subprocess.call(command, shell=True)
-
-    def run(self):
-        self._aud_alsa_input = _ALSA_SNOOP_NAME
-        self._vid_gop_size = self.vid_framerate * 2
-        self._vid_bitrate = self.total_bitrate - self.aud_bitrate
-        self._vid_width, self._vid_height = self.vid_resolution
-
-        self._setup_asoundrc()
-        self._call()
